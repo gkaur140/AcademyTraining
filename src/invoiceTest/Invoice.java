@@ -22,5 +22,5 @@ public class Invoice {
 		System.out.println("Part price is = " + price);
 		System.out.println("Total Amount for part is = " + invoiceTest1.getAmount());//using getter of amount variable to fetch amount of invoice 
 		scanner.close();
-	}
+	}//close scanner
 }
