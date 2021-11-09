@@ -3,9 +3,9 @@ package banquetHallAssignment;
 public class Banquet {
 	double x,y,cess;
 	
-	public double calculateBaseCost(double a, double b, double c) 
+	public double calculateBaseCost(double baseCost, double foodCost, double c) 
 	{
-		x = (a+b+c);
+		x = (baseCost+foodCost+c);
 		return x;
 	}
 	
