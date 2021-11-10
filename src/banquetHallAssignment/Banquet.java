@@ -1,23 +1,23 @@
 package banquetHallAssignment;
 
 public class Banquet {
-	double x,y,cess;
+	double totalBaseCost,tax,cess;
 	
-	public double calculateBaseCost(double baseCost, double foodCost, double c) 
+	public double calculateBaseCost(double baseCost, double foodCost, double tip) 
 	{
-		x = (baseCost+foodCost+c);
-		return x;
+		totalBaseCost = (baseCost+foodCost+tip);
+		return totalBaseCost;
 	}
 	
 	public double calculateTax()
 	{
-	y = (x*(0.13));	
-	return y;
+	tax = (totalBaseCost*(0.13));	
+	return tax;
 	}
 	
 	public double calculateCess(int guest) {
 		
-		 double base = x;
+		 double base = totalBaseCost;
 		if(guest<=40)
 			cess = base*0.04;
 		else if (guest>40&&guest<=80)
@@ -31,7 +31,7 @@ public class Banquet {
 		
 	}
 	public void calculateTheTotalCost() {
-		System.out.println("Bill is = "+ (x+y+cess));
+		System.out.println("Bill is = "+ (totalBaseCost+tax+cess));
 		
 	}
 	}
