@@ -2,17 +2,18 @@ package restaurantFoodCostApplication;
 
 public class Calculate {
 	double foodCost, distance, tip, tax, totalFoodCost;
-	static double discount,deliveryfee;// declared as static because we are using in two classes
-	String coupon;
+	double discount, deliveryfee,fee1,fee2;
+	String coupon2;
+	
 
 	Calculate() {
 
 	}
 
-	Calculate(double f, double d, String c) {
-		this.foodCost = f;
-		this.distance = d;
-		this.coupon = c;
+	Calculate(double foodCost, double distance, String coupon) {
+		this.foodCost = foodCost;
+		this.distance = distance;
+		this.coupon2 = coupon;
 	}
 
 	public double calculateFees() {
@@ -29,11 +30,14 @@ public class Calculate {
 			if (distance <= 10) {
 				deliveryfee = foodCost * 0.05;
 			} else {
-				if (foodCost * 0.02 < 2) {
-					deliveryfee = (distance - 10) * (foodCost * 0.02);
+				fee1=foodCost*0.02*(distance-10);
+				fee2=2*(distance-10);
+				if (fee1 < fee2 ) {
+					deliveryfee = fee1;
 
-				} else {
-					deliveryfee = (distance - 10) * 2;
+				} 
+				else {
+					deliveryfee = fee2;
 				}
 				deliveryfee = deliveryfee + (10 * (foodCost * 0.05));
 			}
@@ -41,10 +45,12 @@ public class Calculate {
 			if (distance <= 5)
 				deliveryfee = foodCost * 0.10;
 			else {
-				if (foodCost * 0.02 < 2)
-					deliveryfee = (distance - 5) * (foodCost * 0.02);
+				fee1=foodCost*0.02*(distance-5);
+				fee2=2*(distance-5);
+				if (fee1<fee2)
+					deliveryfee = fee1;
 				else {
-					deliveryfee = (distance - 5) * 2;
+					deliveryfee = fee2;
 				}
 				deliveryfee = deliveryfee + (5 * (foodCost * 0.10));
 			}
@@ -65,9 +71,17 @@ public class Calculate {
 	}
 
 	public double totalFoodCost() {
+		
+		calculateTip();		
+		calculateTax();
+		calculateFees();
+		Coupon couponClass = new Coupon();
+		discount = couponClass.calculateDiscount(coupon2, foodCost);
 
 		totalFoodCost = (foodCost - discount) + deliveryfee + tax + tip;
 		return totalFoodCost;
-
+		
 	}
+	
+	
 }
