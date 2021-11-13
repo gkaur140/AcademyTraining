@@ -1,11 +1,13 @@
 package restaurantFoodCostApplication;
 
-public class Coupon  {
-	Coupon()
-	{	}
-Calculate calculate1=new Calculate();
-	public double calculateDiscount(String coupon1,double foodCost) {
-		double discount=0.0;
+public class Coupon {
+	Coupon() {
+	}
+
+	Calculate calculate1 = new Calculate();
+
+	public double calculateDiscount(String coupon1, double foodCost) {
+		double discount = 0.0;
 		if (coupon1.equalsIgnoreCase("Coupon5"))
 			discount = 0.05 * foodCost;
 		else if (coupon1.equalsIgnoreCase("Coupon10"))

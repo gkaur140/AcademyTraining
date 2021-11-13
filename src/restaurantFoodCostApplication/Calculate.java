@@ -2,9 +2,8 @@ package restaurantFoodCostApplication;
 
 public class Calculate {
 	double foodCost, distance, tip, tax, totalFoodCost;
-	double discount, deliveryfee,fee1,fee2;
+	double discount, deliveryfee, fee1, fee2;
 	String coupon2;
-	
 
 	Calculate() {
 
@@ -30,13 +29,12 @@ public class Calculate {
 			if (distance <= 10) {
 				deliveryfee = foodCost * 0.05;
 			} else {
-				fee1=foodCost*0.02*(distance-10);
-				fee2=2*(distance-10);
-				if (fee1 < fee2 ) {
+				fee1 = foodCost * 0.02 * (distance - 10);// STORING SUM OF FEE THORUGH 2% TOTAL FOOD COST
+				fee2 = 2 * (distance - 10);// STORING SUM OF DELIVERY FEE AS PER 2 $ PER KM
+				if (fee1 < fee2) {// COMPARING WHICH IS LESS
 					deliveryfee = fee1;
 
-				} 
-				else {
+				} else {
 					deliveryfee = fee2;
 				}
 				deliveryfee = deliveryfee + (10 * (foodCost * 0.05));
@@ -45,9 +43,9 @@ public class Calculate {
 			if (distance <= 5)
 				deliveryfee = foodCost * 0.10;
 			else {
-				fee1=foodCost*0.02*(distance-5);
-				fee2=2*(distance-5);
-				if (fee1<fee2)
+				fee1 = foodCost * 0.02 * (distance - 5);
+				fee2 = 2 * (distance - 5);
+				if (fee1 < fee2)
 					deliveryfee = fee1;
 				else {
 					deliveryfee = fee2;
@@ -71,8 +69,8 @@ public class Calculate {
 	}
 
 	public double totalFoodCost() {
-		
-		calculateTip();		
+
+		calculateTip();
 		calculateTax();
 		calculateFees();
 		Coupon couponClass = new Coupon();
@@ -80,8 +78,7 @@ public class Calculate {
 
 		totalFoodCost = (foodCost - discount) + deliveryfee + tax + tip;
 		return totalFoodCost;
-		
+
 	}
-	
-	
+
 }
