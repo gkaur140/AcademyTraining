@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		int pin = 0;
 		System.out.println("Enter food cost please");
 		double foodCost = scanner.nextDouble();
 		System.out.println("Enter distance please");
@@ -22,11 +23,28 @@ public class Main {
 			double money = scanner.nextDouble();
 			paymentFunctionality.cashPayment(money, totalFoodCost);
 		} else {
-			System.out.println("Please enter last 4 digits of card and pin number");
-			int cardNum = scanner.nextInt();
-			int pin = scanner.nextInt();
-			paymentFunctionality.cardPayment(cardNum, pin);
+			System.out.println("Please enter card number");
+			String cardNum = scanner.next();
+			
+			if(paymentFunctionality.cardPayment(cardNum,pin))
+			{
+			System.out.println("Please Enter Pin number");
+		 pin = scanner.nextInt();
+			if(paymentFunctionality.cardPayment(cardNum, pin))
+			{
+				System.out.println("Pin is correct transaction went through ");
+		}
+			else {
+				System.out.println("Pin incorrect");
+			}
+			}
+			else
+			{
+				System.out.println("Invalid Card Number");
+			}
 		}
 		scanner.close();
 	}
 }
+
+

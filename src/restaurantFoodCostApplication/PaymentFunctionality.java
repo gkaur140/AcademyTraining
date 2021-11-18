@@ -1,5 +1,7 @@
 package restaurantFoodCostApplication;
 
+import java.util.HashMap;
+
 public class PaymentFunctionality implements paymentInterface {
 
 	@Override
@@ -15,12 +17,23 @@ public class PaymentFunctionality implements paymentInterface {
 	}
 
 	@Override
-	public void cardPayment(int cardNum, int Pin) {
-		if (pin == Pin) {
-			System.out.println("Transaction went through card number ending with " + cardNum);
-			System.out.println("Balance is = 0");
+	public boolean cardPayment(String cardNum, int pin) {
+
+		HashMap<String, Integer> cardInfo = new HashMap<String, Integer>();
+		cardInfo.put("1234534674589506", 1234);
+		cardInfo.put("3457638906367849", 2345);
+		cardInfo.put("8878767589645677", 6789);
+		cardInfo.put("4573890246835903", 3457);
+		cardInfo.put("4589236792068935", 3467);
+		cardInfo.put("4579024567832678", 6783);
+		cardInfo.put("4589031658667890", 3489);
+		cardInfo.put("6790432167895437", 3490);
+		cardInfo.put("7890543267895438", 3498);
+		cardInfo.put("6789054326789054", 2690);
+		if (pin == 0) {
+			return (cardInfo.containsKey(cardNum));
 		} else {
-			System.out.println("Transaction Declined");
+			return (cardInfo.containsValue(pin));
 		}
 
 	}
